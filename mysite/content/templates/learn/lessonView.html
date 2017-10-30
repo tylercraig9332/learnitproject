@@ -1,0 +1,36 @@
+{% extends "learn/header.html" %}
+
+{% block content %}
+<img src="/static/content/img/assimillogo.png" alt="Assimil"/>
+	<div class="container">
+		<h2> {{lesson.title}} </h2>
+		<div id=pdfviewer>
+		<embed src="assimilfrench.pdf#page={{ lesson.pdf_start }}" type="application/PDF" width="500px" height="740px"></embed>
+		<embed src="assimilfrench.pdf#page=15" type="application/PDF" width="500px" height="740px"></embed>
+		<br>
+		<embed src="assimilfrench.pdf#page=16" type="application/PDF" width="500px" height="740px"></embed>
+		<embed src="assimilfrench.pdf#page=17" type="application/PDF" width="500px" height="740px"></embed>
+	</div>
+	</div>
+	<nav aria-label="...">
+  <ul class="pager">
+		<!--TODO: Install jinja so I can do this within this template
+		{# set next_page = lesson.id + 1 #}
+		{# set prev_page = lesson.id - 1 #}-->
+
+		<li id="prev_lesson" href="{{ lesson.id }}"><a id="prev_link" href="#" >Previous</a></li>
+    <li id="next_lesson"><a id="next_link" href="#">Next</a></li>
+		<script>
+				let element_id = document.getElementById("prev_lesson");
+				let id = parseInt(element_id.href);
+				console.log(element_id);
+				console.log(id);
+				let prev_id = id--;
+				let next_id = id++;
+				document.getElementById("prev_link").href = "learn/" + prev_id;
+				document.getElementById("next_link").href = "learn/" + next_id;
+
+		</script>
+  </ul>
+</nav>
+{% endblock %}

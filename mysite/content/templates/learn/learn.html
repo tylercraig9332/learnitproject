@@ -1,0 +1,16 @@
+{% extends "learn/header.html" %}
+{% block content %}
+<div>
+	<img src="/static/content/img/assimillogo.png" alt="<h2>Assimil</h2>"/>
+    <h3>Assimil French with Ease:</h3>
+	{% if lessons %}
+    	<div class="list-group">
+    	{% for lesson in lessons %}
+        	<a class="list-group-item" href="/learn/{{ lesson.id }}/">{{lesson.title}}</a>
+    	{% endfor %}
+		</div>
+	{% else %}
+    	<div class="container"><p>No lessons are available at the moment.</p></div>
+	{% endif %}
+<div>
+{% endblock %}
