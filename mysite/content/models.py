@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Lesson(models.Model):
     title = models.CharField(max_length=50)
@@ -8,12 +7,28 @@ class Lesson(models.Model):
     pdf_end = models.IntegerField()
     is_review = models.BooleanField(default=False)
 
-class Memeber(models.Model):
-    username = models.CharField(max_length=15)
-    password = models.CharField(max_length=30)
-    current_lesson = models.IntegerField(default=1)
-    email = models.CharField(blank=True, max_length=100)
-
-
     def __str__(self):
         return self.title
+
+
+class Word(models.Model):
+    word = models.CharField(max_length=50, help_text="Word")
+    translation = models.CharField(max_length=50, help_text="Translation")
+
+    NOUN = 'N'
+    VERB = 'V'
+    ADJ = 'ADJ'
+    OTHER = 'OTR'
+    WORD_TYPES = (
+        (NOUN, 'Noun'),
+        (VERB, 'Verb'),
+        (ADJ, 'Adjective'),
+        (OTHER, 'Other'))
+    word_type = models.CharField(
+        max_length=3,
+        choices=WORD_TYPES,
+        default=NOUN
+    )
+
+    def __str__(self):
+        return self.word

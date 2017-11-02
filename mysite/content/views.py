@@ -4,6 +4,7 @@ from django.template import loader
 from django.http import Http404
 
 from .models import Lesson
+from .models import Word
 
 # Create your views here.
 
@@ -23,3 +24,7 @@ def lesson(request, lesson_id):
         raise Http404("Lesson does not exist :(")
 
     return render(request, 'learn/lessonView.html', {'lesson' : lesson})
+
+def word_list(request):
+    words = Word.objects.all()
+    return render(request, 'learn/listView.html', {'words' : words})

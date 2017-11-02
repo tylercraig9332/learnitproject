@@ -7,6 +7,7 @@ from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfdevice import PDFDevice
 
 import traceback
+from sys import os
 
 class generate:
 
@@ -18,8 +19,9 @@ class generate:
 
 
     def load(self):
-        try:
-            fp = open(self.location, 'rp')
+        fp = open(self.location, 'rp')
+	try:
+            #fp = open(self.location, 'r')
             parser = PDFParser(self.fp)
             self.document = PDFDocument(parser)
             if document.is_extractable:
@@ -30,7 +32,6 @@ class generate:
             self.error = "Couldn't load file \nERROR: "
             err = "Error when opening and loading file\nError: " + str(type(e))
             print err
-            traceback.print_stack()
 
 
 '''
@@ -43,5 +44,6 @@ print("Friday: Chest/Triceps\n")
 print("Saturday: Legs/Abs\n")
 '''
 # When ready to execute
-doc = generate('./Assimil/French/FrenchWithEase.pdf')
+assimil_path = os.getcwd() + '/Assimil/French/FrenchWithEase.pdf'
+doc = generate(assimil_path)
 doc.load()
