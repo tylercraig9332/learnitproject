@@ -4,7 +4,8 @@ from django.template import loader
 from django.http import Http404
 
 from .models import Lesson
-from .models import Word
+from .models import Word, WordList
+from .forms import AddWordForm
 
 # Create your views here.
 
@@ -26,5 +27,12 @@ def lesson(request, lesson_id):
     return render(request, 'learn/lessonView.html', {'lesson' : lesson})
 
 def word_list(request):
-    words = Word.objects.all()
-    return render(request, 'learn/listView.html', {'words' : words})
+    word_lists = WordList.objects.all()
+    return render(request, 'learn/listView.html', {'lists' : word_lists})
+
+def list_add(request):
+    if request.method == 'POST':
+        form = WordListForm(request.POST)
+    else:
+        form = AddWordForm()
+    return render(request, 'learn/listAddView.html',  {'listData' : form})

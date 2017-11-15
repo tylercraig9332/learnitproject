@@ -4,7 +4,7 @@
 	<img src="/static/content/img/assimillogo.png" alt="<h2>Assimil</h2>"/>
     <h3>Assimil French with Ease:</h3>
 	{% if lessons %}
-    	<div class="list-group">
+    	<div class="list-group"> 
     	{% for lesson in lessons %}
         	<a class="list-group-item" href="/learn/{{ lesson.id }}/">{{lesson.title}}</a>
     	{% endfor %}

@@ -1,0 +1,28 @@
+{% extends "learn/header.html" %}
+
+{% block content %}
+
+<div class=jumbotron>
+  <h2>Welcome to Learn It Languages  -  Sign Up!</h2>
+  <br>
+  <form method="post"
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      <br>
+      <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+      <br>
+      <input type="password" class="form-control" placeholder="Password Confirmation" aria-describedby="basic-addon1">
+      <br>
+      <button type="submit" class="btn btn-default">Sign Up</button>
+      <br>
+      <p>Already have an account? <button class="btn btn-default">Log In</button><p>
+    </div>
+</form>
+  <!--form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form-->
+</div>
+
+{% endblock %}

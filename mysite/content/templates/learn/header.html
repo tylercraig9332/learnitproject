@@ -1,8 +1,9 @@
 <html>
 <head>
+	{% load static %}
 <meta charset="utf-8">
-<script src="../../static/js/bootstrap.min.js" type="text/javascript" ></script>
-<link rel="stylesheet" href="../../static/css/bootstrap.css" type="text/css" />
+<script src="{% static 'js/bootstrap.js' %}" type="text/javascript" ></script>
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
 
 {% if lesson.title %}
 	<title>Learn It: Assimil | {{lesson.title}} </title>

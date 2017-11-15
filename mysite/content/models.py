@@ -32,3 +32,10 @@ class Word(models.Model):
 
     def __str__(self):
         return self.word
+
+
+class WordList(models.Model):
+    name = models.CharField(max_length=50, help_text="List Name")
+    description = models.TextField(default='')
+    created_by = models.ForeignKey('auth.User')
+    list_id = models.IntegerField()

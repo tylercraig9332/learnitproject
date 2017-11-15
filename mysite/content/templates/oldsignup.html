@@ -1,0 +1,20 @@
+{% extends "learn/header.html" %}
+
+{% block title %}Sign up!{% endblock %}
+
+{% block content %}
+
+<div class=jumbotron>
+  <h2>Welcome to Learn It Languages  -  Sign Up!</h2>
+  <br>
+
+</form>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-default" type="submit">Sign up</button>
+    <p>Already have an Account? <a href="/login/">Login</p>
+  </form>
+</div>
+
+{% endblock %}

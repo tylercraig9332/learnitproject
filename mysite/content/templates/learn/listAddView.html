@@ -1,0 +1,17 @@
+{% extends "learn/header.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="input-group">
+    <h3>New Word List:</h3>
+  </br>
+  {%  if listData %}
+    <input class="form-control" placeholder="{{ listData.list_name.id }}"></input>
+  {% else %}
+    <input class="form-control" placeholder="Title"></input>
+  {% endif %}
+    <input class="form-control" id="sizing-addon1" placeholder="Description"></input>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "learn/header.html" %}
+
+{% block content %}
+  <h1>Create a new list:</h1>
+  <div class="jumbotron">
+    <form id="list_name" action="list_add/" name="list_name" method="post">
+      {% csrf_token %}
+      <label for="newList">List name: </label>
+      <br>
+      <div class="col-lg-4">
+        <div class="input-group">
+          <input class="form-control" id="newList" type="text" name="newList" >
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Create</button>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+      <!--input class="form-control" id="newList" type="text" name="newList" >
+      <input class="btn btn-default" type="submit" value="Create"-->
+    </form>
+  </div>
+  <h1>Saved Lists:</h1>
+  <div class="container">
+  {% if lists %}
+  {% for list in lists %}
+    <a href="#"> {{ list.name }} </a>
+  {% endfor %}
+  {% else %}
+    <p>You have not created any word lists</p>
+  {% endif %}
+</div>
+{% endblock %}

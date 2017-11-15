@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^', include('content.urls')),
     url(r'^signup/', views.signup, name='signup'),
     url(r'^login/', auth_views.login, name='login'),
-    url(r'^logout/', auth_views.logout, name='logout'),
+    url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'^accounts/', include('accounts.urls')),
     #url(r'^blog/', include('blog.urls')),
 ]

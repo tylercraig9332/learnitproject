@@ -1,0 +1,7 @@
+{% include "learn/header.html" %}
+
+{% block title %}| {{ user.username }}{% endblock %}
+
+{% block content %}
+<p>Welcome, {{ user.username }}</p>
+{% endblock %}
