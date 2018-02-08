@@ -127,4 +127,4 @@ STATICFILES_DIR = [
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/accounts/profile'

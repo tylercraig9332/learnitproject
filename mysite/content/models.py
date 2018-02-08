@@ -12,8 +12,9 @@ class Lesson(models.Model):
 
 
 class Word(models.Model):
+    word_id = models.AutoField(primary_key=True)
     word = models.CharField(max_length=50, help_text="Word")
-    translation = models.CharField(max_length=50, help_text="Translation")
+    translation = models.CharField(max_length=50, help_text="Translation in Target Language")
 
     NOUN = 'N'
     VERB = 'V'
@@ -33,9 +34,11 @@ class Word(models.Model):
     def __str__(self):
         return self.word
 
-
 class WordList(models.Model):
-    name = models.CharField(max_length=50, help_text="List Name")
-    description = models.TextField(default='')
-    created_by = models.ForeignKey('auth.User')
-    list_id = models.IntegerField()
+    name = models.CharField(max_length=50, help_text="Name Of List")
+    # TODO: need to identify the way Django stores user ids
+    user = models.IntegerField()
+    date_created = models.DateField(auto_now=True)
+    # TODO: fiqure out if I need at max_length attribute and see if there is a longer field type for this -- I think ther is.
+    word_ids = models.CharField(max_length=20)
+    description = models.TextField()

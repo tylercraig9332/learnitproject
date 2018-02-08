@@ -27,12 +27,24 @@ def lesson(request, lesson_id):
     return render(request, 'learn/lessonView.html', {'lesson' : lesson})
 
 def word_list(request):
+    if not request.user.is_authenticated:
+        return render(request, 'plslogin.html')
     word_lists = WordList.objects.all()
     return render(request, 'learn/listView.html', {'lists' : word_lists})
 
+#needs to be fixed to play to the new model-skeem
 def list_add(request):
+    if not request.user.is_authenticated:
+        return render(request, 'plslogin.html')
+
     if request.method == 'POST':
         form = WordListForm(request.POST)
     else:
         form = AddWordForm()
     return render(request, 'learn/listAddView.html',  {'listData' : form})
+
+def pls_login(request):
+    if request.user.is_authenticated:
+        return render(request, '/')
+
+    return render(request, 'learn/plslogin.html')

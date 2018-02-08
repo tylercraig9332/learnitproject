@@ -9,5 +9,12 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def profile(request):
-    userdata = request.user.get_profile()
-    return(request, 'accounts/profile.html', {'user' : userdata})
+    userdata = request.user
+    return render(request, 'accounts/profile.html', {'user' : userdata})
+
+def inbox(request):
+    return render(request, 'accounts/inbox.html')
+
+def account_edit(request):
+    userdata = request.username
+    return render(request, 'accounts/account_edit.html', {'user' : userdata})

@@ -22,7 +22,6 @@ def signup(request):
 def login(request):
     username = request.POST['username']
     password = request.POST['password']
-    request.session.username = request.POST['username']
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
