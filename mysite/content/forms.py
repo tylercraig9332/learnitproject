@@ -3,6 +3,10 @@ from django import forms
 from django.forms import ModelForm
 
 
+class NewWordList(forms.Form):
+    list_name = forms.CharField(label="newList", max_length=50)
+
+
 class AddWordForm(forms.Form):
     list_name = forms.CharField(label="List Name", max_length=40)
 '''

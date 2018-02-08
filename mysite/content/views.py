@@ -29,8 +29,14 @@ def lesson(request, lesson_id):
 def word_list(request):
     if not request.user.is_authenticated:
         return render(request, 'plslogin.html')
-    word_lists = WordList.objects.all()
-    return render(request, 'learn/listView.html', {'lists' : word_lists})
+
+    model = WordList()
+    fields = ['name', 'user_id', 'date', 'word_ids', 'description']
+    try:
+        word_lists = WordList.objects.all()
+    except WordList.DoesNotExist:
+            raise Http404("We've encountered an error")
+    return render(request, 'learn/listView.html', {'lists' : word_lists, 'fields' : fields, 'model' : model})
 
 #needs to be fixed to play to the new model-skeem
 def list_add(request):
@@ -38,7 +44,7 @@ def list_add(request):
         return render(request, 'plslogin.html')
 
     if request.method == 'POST':
-        form = WordListForm(request.POST)
+        form = NewWordList(request.POST)
     else:
         form = AddWordForm()
     return render(request, 'learn/listAddView.html',  {'listData' : form})

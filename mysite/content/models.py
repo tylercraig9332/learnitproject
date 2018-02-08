@@ -39,6 +39,8 @@ class WordList(models.Model):
     # TODO: need to identify the way Django stores user ids
     user = models.IntegerField()
     date_created = models.DateField(auto_now=True)
-    # TODO: fiqure out if I need at max_length attribute and see if there is a longer field type for this -- I think ther is.
     word_ids = models.CharField(max_length=20)
     description = models.TextField()
+
+    def __str__(self):
+        return self.name
