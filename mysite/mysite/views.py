@@ -1,4 +1,5 @@
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth import login as lg
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.http import Http404
@@ -24,7 +25,7 @@ def login(request):
     password = request.POST['password']
     user = authenticate(request, username=username, password=password)
     if user is not None:
-        login(request, user)
+        lg(request, user)
         return render(request, 'oldlogin.html', {'user' : user})
     else:
         return Http404("Error occured with loging in user")
