@@ -1,0 +1,22 @@
+{% extends 'learn/header.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <p>Please login to use this feature</p>
+  <button class="btn btn-default" onclick="return login();">Login</button>
+  <button class="btn btn-default" onclick="return signup();">Signup</button>
+</div>
+
+<script>
+
+function login(){
+  window.location.href = "/login/";
+}
+
+function signup(){
+  window.location.href = "/signup/";
+}
+
+</script>
+
+{% endblock %}
