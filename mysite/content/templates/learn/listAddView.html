@@ -4,14 +4,21 @@
 <div class="jumbotron">
   <div class="input-group">
     <h3>New Word List:</h3>
+
   </br>
-  {%  if listData %}
-    <input class="form-control" placeholder="{{ listData.list_name }}"></input>
-  {% else %}
-    <input class="form-control" placeholder="Title"></input>
-  {% endif %}
-    <input class="form-control" id="sizing-addon1" placeholder="Description"></input>
+
+  <input class="form-control" value="{{ listData.list_name.value }}" placeholder="List Name"></input>
+  <textarea class="form-control" id="sizing-addon1" value="{{ listData.description.value }}" placeholder="List Description"></textarea>
 
   </div>
+<br>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Added Words</div>
+      <div class="panel-body">
+        {% for word in words %}
+        {% endfor %}
+      </div>
+    </div>
 </div>
 {% endblock %}

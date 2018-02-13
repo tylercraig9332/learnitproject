@@ -5,7 +5,7 @@ from django.http import Http404
 
 from .models import Lesson
 from .models import Word, WordList
-from .forms import AddWordForm
+from .forms import AddWordForm, NewWordList
 
 # Create your views here.
 
@@ -31,12 +31,13 @@ def word_list(request):
         return render(request, 'plslogin.html')
 
     model = WordList()
-    fields = ['name', 'user_id', 'date', 'word_ids', 'description']
+    user_fields = ['list_name', 'description']
+    field_names = ['List Name', "Description"]
     try:
         word_lists = WordList.objects.all()
     except WordList.DoesNotExist:
             raise Http404("We've encountered an error")
-    return render(request, 'learn/listView.html', {'lists' : word_lists, 'fields' : fields, 'model' : model})
+    return render(request, 'learn/listView.html', {'lists' : word_lists, 'fields' : user_fields, 'model' : model })
 
 #needs to be fixed to play to the new model-skeem
 def list_add(request):
