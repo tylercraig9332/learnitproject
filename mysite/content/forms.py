@@ -9,7 +9,10 @@ class NewWordList(forms.Form):
 
 
 class AddWordForm(forms.Form):
-    list_name = forms.CharField(label="List Name", max_length=40)
+    word = forms.CharField(label="word", max_length=50)
+    translation = forms.CharField(label="translation", max_length=50)
+
+    part_speach = forms.ChoiceField()
 '''
 class WordListForm(ModelForm):
     class Meta:

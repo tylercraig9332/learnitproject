@@ -47,8 +47,15 @@ def list_add(request):
     if request.method == 'POST':
         form = NewWordList(request.POST)
     else:
-        form = AddWordForm()
+        raise Http404("We've encountered an error - See line 50 in content/views.py")
     return render(request, 'learn/listAddView.html',  {'listData' : form})
+
+def list_view(request):
+    if not request.user.is_authenticated:
+        return render(request, 'plslogin.html')
+
+    # TODO: add a view that takes in form data from listAddView and puts in
+    # in the database and renders a page that views the list.
 
 def pls_login(request):
     if request.user.is_authenticated:

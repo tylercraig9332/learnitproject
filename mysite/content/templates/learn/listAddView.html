@@ -2,23 +2,75 @@
 
 {% block content %}
 <div class="jumbotron">
-  <div class="input-group">
+  <!--div class="input-group"-->
     <h3>New Word List:</h3>
 
   </br>
+    <input class="form-control" value="{{ listData.list_name.value }}" placeholder="List Name"></input>
+    <textarea class="form-control" id="sizing-addon1" value="{{ listData.description.value }}" placeholder="List Description"></textarea>
 
-  <input class="form-control" value="{{ listData.list_name.value }}" placeholder="List Name"></input>
-  <textarea class="form-control" id="sizing-addon1" value="{{ listData.description.value }}" placeholder="List Description"></textarea>
-
-  </div>
+  <!--/div-->
 <br>
   <div class="container">
     <div class="panel panel-default">
       <div class="panel-heading">Added Words</div>
       <div class="panel-body">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wordModal">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
         {% for word in words %}
+
         {% endfor %}
+
+
+        <div class="modal fade" id="wordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Add New Word</h4>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                <div class="row">
+                  <div class="col-lg-5">
+                    <input class="form-control" id="word" placeholder="Word">
+                  </div>
+                  <div class="col-lg-5">
+                    <input class="form-control" id="translation" placeholder="Translation"><!-- word and it's translation -->
+                  </div>
+                </div>
+                <!-- TODO: add radio buttons for the word type and implement the js from bootstrap -->
+                <br >
+                <div class="btn-group" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="options" id="noun" autocomplete="off" checked> Noun
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="options" id="verb" autocomplete="off"> Verb
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="options" id="adj" autocomplete="off"> Adj/Adv
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="options" id="other" autocomplete="off"> Other
+                  </label>
+                </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success">Save</button>
+              </div>
+
+            </div><!--/.modal-content -->
+          </div><!--/.modal-dialog -->
+        </div><!-- /.modal -->
+
+
       </div>
     </div>
+    <br >
+    <button type="submit" class="btn btn-success">Save</button>
 </div>
 {% endblock %}
