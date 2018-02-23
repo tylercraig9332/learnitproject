@@ -4,16 +4,15 @@
 <div class="jumbotron">
   <!--div class="input-group"-->
     <h3>New Word List:</h3>
-
+<form action="list_render/" method="post">
+  {% csrf_token %}
   </br>
-    <input id="list_name" class="form-control" value="{{ listData.list_name.value }}" placeholder="List Name"></input>
-    <textarea class="form-control" id="description" value="{{ listData.description.value }}" placeholder="List Description"></textarea>
+    <input id="list_name" name="list_name" class="form-control" value="{{ listData.list_name.value }}" placeholder="List Name"></input>
+    <textarea class="form-control" name="description" value="{{ listData.description.value }}" placeholder="List Description"></textarea>
 
   <!--/div-->
 <br>
   <div class="container">
-    <form id="list_create" action="list_render/" name="list_create" method="post">
-      {% csrf_token %}
     <div class="panel panel-default">
       <div class="panel-heading">Added Words</div>
       <div class="panel-body">

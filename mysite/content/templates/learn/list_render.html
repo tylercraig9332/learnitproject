@@ -4,9 +4,12 @@
 {% if list %}
 
 <h1>{{ list.title }}<h1>
-  
+
 {% else %}
-<p> error list could not be loaded </p>
+<p>test: {{ test }}
+{% for data in datas %}
+<p> data: {{ data }}</p>
+{% endfor %}
 {% endif %}
 
 {% endblock %}

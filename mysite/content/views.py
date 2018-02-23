@@ -4,6 +4,8 @@ from django.template import loader
 from django.http import Http404
 from django.utils import timezone
 
+from django.contrib.auth.models import User
+
 from .models import Lesson
 from .models import Word, WordList
 from .forms import AddWordForm, NewWordList
@@ -57,14 +59,22 @@ def list_render(request):
 
     # TODO: add a view that takes in form data from listAddView and puts in
     # in the database and renders a page that views the list.
-    if request.POST.get("list_create"):
+    if request.POST.__contains__('list_name'):
         name = request.POST.get('list_name')
-        user = request.user_id
+        user = request.user
         date_created = timezone.now()
         word_ids = 'to be edited'
         description = request.POST.get('description')
-        newList = WordList(name, user, date_created, word_ids, description)
-    return render(request, 'learn/list_render.html')
+        newList = WordList(0, name, user, date_created, word_ids, description)
+        newList.save()
+        data = "list pulled successfully."
+    else:
+        # TODO: edit this to work right.
+        #newList = request.POST.get('list')
+        newList = None
+        data = "list couldn't be pulled from form."
+        test = request.POST.get('list_name')
+    return render(request, 'learn/list_render.html', {'list' : newList, 'datas' : request.POST, 'test':test})
 
 def pls_login(request):
     if request.user.is_authenticated:

@@ -5,7 +5,7 @@ from django.forms import ModelForm
 
 class NewWordList(forms.Form):
     list_name = forms.CharField(label="list_name", max_length=50)
-    description = forms.CharField(label="newList", max_length=250)
+    description = forms.CharField(label="description", max_length=250)
 
 
 class AddWordForm(forms.Form):
