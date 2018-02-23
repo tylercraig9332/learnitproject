@@ -1,0 +1,12 @@
+{% extends "learn/header.html" %}
+
+{% block content %}
+{% if list %}
+
+<h1>{{ list.title }}<h1>
+  
+{% else %}
+<p> error list could not be loaded </p>
+{% endif %}
+
+{% endblock %}

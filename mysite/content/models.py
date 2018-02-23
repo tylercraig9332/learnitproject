@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Lesson(models.Model):
@@ -37,9 +38,9 @@ class Word(models.Model):
 class WordList(models.Model):
     name = models.CharField(max_length=50, help_text="Name Of List")
     # TODO: need to identify the way Django stores user ids
-    user = models.IntegerField()
+    user = models.ForeignKey(User)
     date_created = models.DateField(auto_now=True)
-    word_ids = models.CharField(max_length=20)
+    word_ids = models.ManyToManyField(Word)
     description = models.TextField()
 
     def __str__(self):

@@ -6,12 +6,14 @@
     <h3>New Word List:</h3>
 
   </br>
-    <input class="form-control" value="{{ listData.list_name.value }}" placeholder="List Name"></input>
-    <textarea class="form-control" id="sizing-addon1" value="{{ listData.description.value }}" placeholder="List Description"></textarea>
+    <input id="list_name" class="form-control" value="{{ listData.list_name.value }}" placeholder="List Name"></input>
+    <textarea class="form-control" id="description" value="{{ listData.description.value }}" placeholder="List Description"></textarea>
 
   <!--/div-->
 <br>
   <div class="container">
+    <form id="list_create" action="list_render/" name="list_create" method="post">
+      {% csrf_token %}
     <div class="panel panel-default">
       <div class="panel-heading">Added Words</div>
       <div class="panel-body">
@@ -21,7 +23,6 @@
         {% for word in words %}
 
         {% endfor %}
-
 
         <div class="modal fade" id="wordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
@@ -50,7 +51,7 @@
                     <input type="radio" name="options" id="verb" autocomplete="off"> Verb
                   </label>
                   <label class="btn btn-primary">
-                    <input type="radio" name="options" id="adj" autocomplete="off"> Adj/Adv
+                    <input type="radio" name="  </form>options" id="adj" autocomplete="off"> Adj/Adv
                   </label>
                   <label class="btn btn-primary">
                     <input type="radio" name="options" id="other" autocomplete="off"> Other
@@ -72,5 +73,6 @@
     </div>
     <br >
     <button type="submit" class="btn btn-success">Save</button>
+  </form>
 </div>
 {% endblock %}

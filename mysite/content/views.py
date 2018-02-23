@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.http import Http404
+from django.utils import timezone
 
 from .models import Lesson
 from .models import Word, WordList
 from .forms import AddWordForm, NewWordList
+
 
 # Create your views here.
 
@@ -32,7 +34,6 @@ def word_list(request):
 
     model = WordList()
     user_fields = ['list_name', 'description']
-    field_names = ['List Name', "Description"]
     try:
         word_lists = WordList.objects.all()
     except WordList.DoesNotExist:
@@ -50,12 +51,20 @@ def list_add(request):
         raise Http404("We've encountered an error - See line 50 in content/views.py")
     return render(request, 'learn/listAddView.html',  {'listData' : form})
 
-def list_view(request):
+def list_render(request):
     if not request.user.is_authenticated:
         return render(request, 'plslogin.html')
 
     # TODO: add a view that takes in form data from listAddView and puts in
     # in the database and renders a page that views the list.
+    if request.POST.get("list_create"):
+        name = request.POST.get('list_name')
+        user = request.user_id
+        date_created = timezone.now()
+        word_ids = 'to be edited'
+        description = request.POST.get('description')
+        newList = WordList(name, user, date_created, word_ids, description)
+    return render(request, 'learn/list_render.html')
 
 def pls_login(request):
     if request.user.is_authenticated:
