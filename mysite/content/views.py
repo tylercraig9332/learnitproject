@@ -60,12 +60,15 @@ def list_render(request):
     # TODO: add a view that takes in form data from listAddView and puts in
     # in the database and renders a page that views the list.
     if request.POST.__contains__('list_name'):
-        name = request.POST.get('list_name')
-        user = request.user
-        date_created = timezone.now()
-        word_ids = 'to be edited'
-        description = request.POST.get('description')
-        newList = WordList(0, name, user, date_created, word_ids, description)
+        newList = WordList()
+        newList.name = request.POST.get('list_name')
+        newList.user = request.user
+        newList.date_created = timezone.now()
+        words = Word.objects.all()
+        for word in words:
+            newList.word_ids.add(word)
+        newList.description = request.POST.get('description')
+
         newList.save()
         data = "list pulled successfully."
     else:
@@ -73,8 +76,7 @@ def list_render(request):
         #newList = request.POST.get('list')
         newList = None
         data = "list couldn't be pulled from form."
-        test = request.POST.get('list_name')
-    return render(request, 'learn/list_render.html', {'list' : newList, 'datas' : request.POST, 'test':test})
+    return render(request, 'learn/list_render.html', {'list' : newList, 'datas' : request.POST})
 
 def pls_login(request):
     if request.user.is_authenticated:

@@ -43,5 +43,13 @@ class WordList(models.Model):
     word_ids = models.ManyToManyField(Word)
     description = models.TextField()
 
+    #def __init__(list_name, curr_user, date, words=None, desc=None, *args, **kwargs):
+    #    list_name=name
+    #    curr_user=user
+    #    date=date_created
+    #    words=word_ids
+    #    desc=description
+
+
     def __str__(self):
         return self.name
