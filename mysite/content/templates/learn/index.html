@@ -4,10 +4,15 @@
 	<div class="jumbotron">
 		<h1>Welcome</h1>
 		<p>Wanna learn another language?</p>
-		<p>See courses and tools below:</p>
+		<p>See free courses and tools below:</p>
 		<div class="list-group">
-			<a href="/learn/" class="list-group-item">Assimil French with Ease <span class="label label-default">New</span></a>
-			<a href="/learn/lists" class="list-group-item">Word Lists <span class="label label-default">In development</span></a>
+			<a href="{% url 'learn' %}" class="list-group-item">Assimil French with Ease <span class="label label-default">New</span></a>
+			<a href="{% url 'Word Lists' %}" class="list-group-item">Word Lists <span class="label label-default">In development</span></a>
+			<a href="{% url 'Study Planner' %}" class="list-group-item">Study Planner <span class="label label-default">Comming Soon</span></a>
+		</div>
+		<p>Other Resources:</p>
+		<div class="list-group">
+			<a href="{% url 'blog_home' %}" class="list-group-item">Blog <span class="label label-default">In development</span></a>
 		</div>
 	</div>
 

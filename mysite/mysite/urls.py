@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^signup/', views.signup, name='signup'),
     url(r'^login/', auth_views.login, name='login'),
     url(r'^logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
+    # INSTALLED_APPS:
     url(r'^accounts/', include('accounts.urls')),
-    #url(r'^blog/', include('blog.urls')),
+    url(r'^blog/', include('blog.urls')),
+    url(r'^study/', include('planner.urls')),
 ]
