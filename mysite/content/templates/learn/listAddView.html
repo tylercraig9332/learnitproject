@@ -1,4 +1,5 @@
 {% extends "learn/header.html" %}
+{% load static %}
 
 {% block content %}
 <div class="jumbotron">
@@ -16,8 +17,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">Added Words</div>
       <div class="panel-body">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wordModal">
+        <script href="{% static 'js/words.js' %}"></script>
+        <div id='words'></div>
+        <!--button type="button" class="btn btn-primary" data-toggle="modal" data-target="#wordModal">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <words id="words"> </words>
         </button>
         <script>
 
@@ -28,7 +32,7 @@
 
         </script>
         {% for word in words %}
-
+        <!-- This will be used when editing existing word lists >
         {% endfor %}
 
         <div class="modal fade" id="wordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -45,10 +49,10 @@
                     <input class="form-control" id="word" placeholder="Word">
                   </div>
                   <div class="col-lg-5">
-                    <input class="form-control" id="translation" placeholder="Translation"><!-- word and it's translation -->
+                    <input class="form-control" id="translation" placeholder="Translation"><!-- word and it's translation >
                   </div>
                 </div>
-                <!-- TODO: add radio buttons for the word type and implement the js from bootstrap -->
+                <!-- TODO: add radio buttons for the word type and implement the js from bootstrap >
                 <br >
                 <div class="btn-group" data-toggle="buttons">
                   <label class="btn btn-primary active">
@@ -68,12 +72,12 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="addWord" class="btn btn-success">Save</button>
+                <button id="saveReact" type="button" onclick="addWord()" class="btn btn-success">Save</button>
               </div>
 
-            </div><!--/.modal-content -->
-          </div><!--/.modal-dialog -->
-        </div><!-- /.modal -->
+            </div><!--/.modal-content >
+          </div><!--/.modal-dialog >
+        </div--><!-- /.modal -->
 
 
       </div>

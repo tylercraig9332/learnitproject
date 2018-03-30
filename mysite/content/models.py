@@ -36,6 +36,7 @@ class Word(models.Model):
         return self.word
 
 class WordList(models.Model):
+    list_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, help_text="Name Of List")
     # TODO: need to identify the way Django stores user ids
     user = models.ForeignKey(User, models.SET_NULL, null=True)

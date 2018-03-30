@@ -25,7 +25,7 @@
   <div class="container">
   {% if lists %}
   {% for list in lists %}
-    <a href="#"> {{ list.name }} </a>
+    <a href="list_render/{{ list.list_id }}"> {{ list.name }} </a>
   {% endfor %}
   {% else %}
     <p>You have not created any word lists</p>

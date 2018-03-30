@@ -53,7 +53,7 @@ def list_add(request):
         raise Http404("We've encountered an error - See line 50 in content/views.py")
     return render(request, 'learn/listAddView.html',  {'listData' : form})
 
-def list_render(request):
+def list_render(request, list_id):
     if not request.user.is_authenticated:
         return render(request, 'plslogin.html')
 
